@@ -1,26 +1,106 @@
 @import "tailwindcss";
+@import "./splacescreen.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  @font-face {
+    font-family: 'Summer Loving Sans';
+    src:
+      local('Summer Loving Sans'),
+      local('Summer Loving'),
+      local('SummerLovingSans'),
+      url('/fonts/SummerLovingSans.woff2') format('woff2'),
+      url('/fonts/SummerLovingSans.woff') format('woff'),
+      url('/fonts/SummerLovingSans.ttf') format('truetype');
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
   }
 }
 
+:root {
+  --background: #FAF8F0;
+  --foreground: #0C0D0E;
+  --surface: #F3F1E7;
+  --surface-elevated: #FFFFFF;
+  --surface-dark: #111215;
+  --border-light: rgba(0, 0, 0, 0.07);
+  --border-dark: rgba(255, 255, 255, 0.12);
+  --muted-text: #666C75;
+  --accent-gold: #C5A880;
+  --font-body: 'Summer Loving Sans', 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Syne', 'Summer Loving Sans', 'Plus Jakarta Sans', sans-serif;
+  --font-stencil: 'Anton', 'Syne', sans-serif;
+  --font-script: 'Covered By Your Grace', 'Caveat', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #FAF8F0;
+  overflow-x: clip;
+}
+
 body {
-  background: var(--background);
+  background-color: #FAF8F0;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  letter-spacing: -0.015em;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  width: 100%;
+}
+
+/* Custom Selection */
+::selection {
+  background-color: #0C0D0E;
+  color: #FAF8F0;
+}
+
+/* Font helpers */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-stencil {
+  font-family: var(--font-stencil);
+}
+
+.font-script {
+  font-family: var(--font-script);
+}
+
+/* Glassmorphism & Card Styles */
+.offwhite-glass {
+  background: rgba(248, 248, 246, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+}
+
+.dark-pill-glass {
+  background: rgba(17, 18, 21, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Masked Image Typography Effect (Reference Image 3) */
+.text-image-mask {
+  background-image: url('https://images.unsplash.com/photo-1544829099-b9a0c07fad1a?auto=format&fit=crop&w=2000&q=85');
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+/* Smooth Hide Scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
